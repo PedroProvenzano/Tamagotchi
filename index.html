@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/style.css">
+    <title>Tamagotchi</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pangolin&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="juego">
+
+    
+        <div class="marcoJuego">
+            <img src="Assets/Tamago1fase.gif" id="tamago1Fase" class="tamago1Fase" alt="">
+            <img src="Assets/Tamago2fase.gif" id="tamago2Fase" class="tamago2Fase" alt="">
+            <img src="Assets/rip.png" class="rip" id="rip" alt="">
+            <!-- HUD -->
+            <div class="contEdad">
+                <p id="textoEdad"></p>
+            </div>
+            <div class="contNombre">
+                <p id="textoNombre"></p>
+            </div>
+            <div class="contVidas">
+                <p id="textoVidas"></p>
+            </div>
+            <div class="contPuntos">
+                <p id="textoPuntos"></p>
+            </div>
+            <div class="barraAgua" id="barraAgua">
+                <div class="barraContAgua" id="barraContAgua"></div>
+            </div>
+            <div class="boton agua" id="botonAgua">
+                <img src="Assets/Agua.png" alt="">
+                <p class="costo">-5</p>
+            </div>
+            <div class="barraManzana" id="barraManzana">
+                <div class="barraContManzana" id="barraContManzana"></div>
+            </div>
+            <div class="boton manzana" id="botonAlimento">
+                <img src="Assets/Manzana.png" alt="">
+                <p class="costo">-5</p>
+            </div>
+        </div>
+
+        <div class="consola">
+            <p id="textoConsola" class="textoConsola"></p>
+        </div>
+    </div>
+
+    <script src="scripts/script.js"></script>
+</body>
+</html>
