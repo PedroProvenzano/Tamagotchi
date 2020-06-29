@@ -4,23 +4,36 @@ var Tamagotchi = {
     nombre: "",
     hambre: 100,
     sed: 100,
+    energia: 100,
+    felicidad: 100,
     vidas: 3
 }
 // Variables globales
 var cantidadLineas = 0;
 var terminoJuego = false;
 var puntos = 0;
+var lesionado = false;
 const regex = / /gi; 
 
 // DOM
 const textoConsola = document.getElementById("textoConsola");
 const botonAlimento = document.getElementById("botonAlimento");
 const botonAgua = document.getElementById("botonAgua");
+const botonEnergia = document.getElementById("botonDormir");
+const botonTrabajo = document.getElementById("botonTrabajo");
+const botonFelicidad = document.getElementById("botonJugar");
+const botonYeso = document.getElementById("botonYeso");
+const volverJugarSi = document.getElementById("volverJugarSi");
+const volverJugarNo = document.getElementById("volverJugarNo");
+const volverJugar = document.getElementById("volverJugar");
 const tamago1Fase = document.getElementById("tamago1Fase");
 const tamago2Fase = document.getElementById("tamago2Fase");
 const rip = document.getElementById("rip");
+const huesoRoto = document.getElementById("huesoRoto");
 const barraContManzana = document.getElementById("barraContManzana");
 const barraContAgua = document.getElementById("barraContAgua");
+const barraContEnergia = document.getElementById("barraContEnergia");
+const barraContFelicidad = document.getElementById("barraContFelicidad");
 const textoPuntos = document.getElementById("textoPuntos");
 const textoVidas = document.getElementById("textoVidas");
 const textoNombre = document.getElementById("textoNombre");
@@ -29,10 +42,33 @@ const textoEdad = document.getElementById("textoEdad");
 // Eventos onClick
 botonAlimento.addEventListener("click", alimentar);
 botonAgua.addEventListener("click", hidratar);
-
+botonEnergia.addEventListener("click", descansar);
+botonTrabajo.addEventListener("click", trabajo);
+botonFelicidad.addEventListener("click", jugar);
+botonYeso.addEventListener("click", comprarYeso);
+volverJugarSi.addEventListener("click", volverJugarTrue);
+volverJugarNo.addEventListener("click", volverJugarFalse);
 
 
 // Funciones 
+
+// Tienda
+
+// Comprar Yeso
+function comprarYeso(){
+    if(puntos>=10){
+        textoConsola.textContent+= "\r\n"
+        textoConsola.textContent+= "Compraste un yeso y sanaste a " + Tamagotchi.nombre;
+        cantidadLineas++
+        puntos-=10;
+        lesionado=false;
+    }else{
+        textoConsola.textContent+= "\r\n"
+            textoConsola.textContent+= "No tenes suficientes puntos";
+            cantidadLineas++
+    }
+}
+
 
 // Funciones del HUD
 function barraHambre(){
@@ -85,6 +121,57 @@ function barraSed(){
     }, 200);
 }
 
+function barraEnergia(){
+    var barraEnergiaInter = setInterval(function(){
+        switch(Tamagotchi.energia){
+            case 100:
+                barraContEnergia.style.left = "0%";
+            break;
+            case 80:
+                barraContEnergia.style.left = "-20%";
+            break;
+            case 60:
+                barraContEnergia.style.left = "-40%";
+            break;
+            case 40:
+                barraContEnergia.style.left = "-60%";
+            break;
+            case 20:
+                barraContEnergia.style.left = "-80%";
+            break;
+            case 0:
+                barraContEnergia.style.left = "-100%";
+            break;
+        }
+    }, 200);
+}
+
+function barraFelicidad(){
+    var barraFelicidadInter = setInterval(function(){
+        switch(Tamagotchi.felicidad){
+            case 100:
+                barraContFelicidad.style.left = "0%";
+            break;
+            case 80:
+                barraContFelicidad.style.left = "-20%";
+            break;
+            case 60:
+                barraContFelicidad.style.left = "-40%";
+            break;
+            case 40:
+                barraContFelicidad.style.left = "-60%";
+            break;
+            case 20:
+                barraContFelicidad.style.left = "-80%";
+            break;
+            case 0:
+                barraContFelicidad.style.left = "-100%";
+            break;
+        }
+    }, 200);
+}
+
+
 // Puntos HUD
 function checkPuntos(){
     setInterval(function(){
@@ -120,7 +207,7 @@ function contadorVidas(){
             cantidadLineas++
             terminoJuego = true;
             Tamagotchi.age = "RIP";
-            setTimeout(volverIntentar(),1000);
+            mostrarCartelPerdio();
             clearInterval(set0Inter);
             return;
         }
@@ -129,17 +216,132 @@ function contadorVidas(){
     )
 }
 // Volver a Intentar
-function volverIntentar(){
-    var volveraIntentar = confirm("Queres volver a jugar?");
-    if(volveraIntentar){
-        Tamagotchi.vidas=3;
-        Tamagotchi.age=0;
-        Tamagotchi.hambre = 100;
-        Tamagotchi.sed = 100;
-        terminoJuego = false;
-        inicioJuego();
+function volverJugarTrue(){
+    esconderCartelPerdio();
+    Tamagotchi.vidas=3;
+    Tamagotchi.age=0;
+    puntos=0;
+    Tamagotchi.hambre = 100;
+    Tamagotchi.sed = 100;
+    Tamagotchi.energia = 100;
+    Tamagotchi.felicidad = 100;
+    terminoJuego = false;
+    inicioJuego();
+}
+function volverJugarFalse(){
+    alert("Gracias por haber jugado! \b Juego hecho por Pedro Provenzano");
+    esconderCartelPerdio();
+    botonAlimento.style.pointerEvents = "none";
+    botonAgua.style.pointerEvents = "none";
+    botonEnergia.style.pointerEvents = "none";
+    botonFelicidad.style.pointerEvents = "none";
+    botonYeso.style.pointerEvents = "none";
+    botonTrabajo.style.pointerEvents = "none";
+}
+function mostrarCartelPerdio(){
+    volverJugar.style.display = "block";
+}
+function esconderCartelPerdio(){
+    volverJugar.style.display = "none";
+}
+
+
+// Jugar
+function jugar(){
+    if(Tamagotchi.hambre>20&&Tamagotchi.sed>20&&Tamagotchi.energia>20){
+        textoConsola.textContent+= "\r\n"
+        textoConsola.textContent+= Tamagotchi.nombre + " se fue a jugar, recuperando toda su felicidad";
+        cantidadLineas++
+        Tamagotchi.felicidad = 100;
+        Tamagotchi.hambre-=20;
+        Tamagotchi.sed-=20;
+        Tamagotchi.energia-=20;
     }else{
-        return;
+        if(Tamagotchi.hambre<=20){
+            textoConsola.textContent+= "\r\n"
+            textoConsola.textContent+= Tamagotchi.nombre + " esta muy hambriento para jugar";
+            cantidadLineas++
+        }
+        if(Tamagotchi.sed<=20){
+            textoConsola.textContent+= "\r\n"
+            textoConsola.textContent+= Tamagotchi.nombre + " esta muy sediento para jugar";
+            cantidadLineas++  
+        }
+        if(Tamagotchi.energia<=20){
+            textoConsola.textContent+= "\r\n"
+            textoConsola.textContent+= Tamagotchi.nombre + " esta muy cansado para jugar";
+            cantidadLineas++  
+        }
+    }
+}
+
+// Trabajar
+function trabajo(){
+    if(Tamagotchi.energia>20&&Tamagotchi.felicidad>20&&!lesionado){
+        if(numeroAleatorio(0,100)<10){
+            trabajoTrue()
+            textoConsola.textContent+= "\r\n"
+            textoConsola.textContent+= "Oh no! " + Tamagotchi.nombre + " se lesiono trabajando";
+            cantidadLineas++ 
+            lesionado = true;
+        }else{
+            trabajoTrue()
+        }
+    }else{
+        if(Tamagotchi.energia<=20){
+            textoConsola.textContent+= "\r\n"
+            textoConsola.textContent+= Tamagotchi.nombre + " esta muy cansado para trabajar";
+            cantidadLineas++ 
+        }
+        if(Tamagotchi.felicidad<=20){
+            textoConsola.textContent+= "\r\n"
+            textoConsola.textContent+= Tamagotchi.nombre + " esta muy triste para trabajar";
+            cantidadLineas++ 
+        }
+        if(lesionado){
+            textoConsola.textContent+= "\r\n"
+            textoConsola.textContent+= Tamagotchi.nombre + " esta lesionado y no puede trabajar";
+            cantidadLineas++  
+        }
+    }
+}
+// Caso True
+function trabajoTrue(){
+    textoConsola.textContent+= "\r\n"
+    textoConsola.textContent+= Tamagotchi.nombre + " se fue a trabajar, ganando 10 puntos";
+    cantidadLineas++ 
+    puntos+=10;
+    Tamagotchi.energia-=20;
+    Tamagotchi.felicidad-=20;
+}
+
+
+// Numero Aleatorio
+function numeroAleatorio(desde, hasta) {
+    return Math.max(desde, parseInt(Math.random() * (hasta + 1)));
+}
+
+
+//Descansar
+function descansar(){
+    if(Tamagotchi.hambre>20&&Tamagotchi.sed>20){
+        textoConsola.textContent+= "\r\n"
+        textoConsola.textContent+= Tamagotchi.nombre + " se fue a dormir, recuperando toda su energia";
+        cantidadLineas++
+        Tamagotchi.energia = 100;
+        Tamagotchi.hambre-=20;
+        Tamagotchi.sed-=20;
+    }else{
+        if(Tamagotchi.hambre<=20){
+            textoConsola.textContent+= "\r\n"
+            textoConsola.textContent+= Tamagotchi.nombre + " esta muy hambriento para dormir";
+            cantidadLineas++
+        }
+        if(Tamagotchi.sed<=20){
+            textoConsola.textContent+= "\r\n"
+            textoConsola.textContent+= Tamagotchi.nombre + " esta muy sediento para dormir";
+            cantidadLineas++  
+        }
     }
 }
 
@@ -217,6 +419,14 @@ function checkFase(){
                 tamago2Fase.style.display = "block";
             break;        
         }
+        switch(lesionado){
+            case true:
+                huesoRoto.style.display = "block";
+            break;
+            case false:
+                huesoRoto.style.display = "none";
+            break;
+        }
     },1000);
     
 }
@@ -246,8 +456,7 @@ function hambre(){
                 cantidadLineas++
                 Tamagotchi.vidas--
                 clearInterval(hambreInter);
-                Tamagotchi.hambre = 100;
-                Tamagotchi.sed = 100;
+                reiniciarStats();
                 hambre();
             break;
         }
@@ -281,8 +490,7 @@ function sed(){
                 cantidadLineas++
                 Tamagotchi.vidas--
                 clearInterval(sedInter);
-                Tamagotchi.sed = 100;
-                Tamagotchi.hambre = 100;
+                reiniciarStats();
                 sed();
             break;
         }
@@ -291,7 +499,82 @@ function sed(){
     
 }
 
+// Energia
+function energia(){
+    var energiaInter = setInterval(function(){
+        if(terminoJuego){
+            clearInterval(energiaInter);
+            return;
+        }
+        Tamagotchi.energia-= 20;
+        switch(Tamagotchi.energia){
+            case 40:
+                textoConsola.textContent+= "\r\n"
+                textoConsola.textContent+= Tamagotchi.nombre + " siente cansancio";
+                cantidadLineas++
+            break;
+            case 20:
+                textoConsola.textContent+= "\r\n"
+                textoConsola.textContent+= Tamagotchi.nombre + " siente mareos del cansancio";
+                cantidadLineas++
+            break;
+            case 0:
+                textoConsola.textContent+= "\r\n"
+                textoConsola.textContent+= Tamagotchi.nombre + " murio de cansancio :(";
+                cantidadLineas++
+                Tamagotchi.vidas--
+                clearInterval(energiaInter);
+                reiniciarStats();
+                energia();
+            break;
+        }
+    }
+    ,1000 * 35);
+    
+}
 
+// Felicidad
+function felicidad(){
+    var felicidadInter = setInterval(function(){
+        if(terminoJuego){
+            clearInterval(felicidadInter);
+            return;
+        }
+        Tamagotchi.felicidad-= 20;
+        switch(Tamagotchi.felicidad){
+            case 40:
+                textoConsola.textContent+= "\r\n"
+                textoConsola.textContent+= Tamagotchi.nombre + " siente tristeza";
+                cantidadLineas++
+            break;
+            case 20:
+                textoConsola.textContent+= "\r\n"
+                textoConsola.textContent+= Tamagotchi.nombre + " siente depresion";
+                cantidadLineas++
+            break;
+            case 0:
+                textoConsola.textContent+= "\r\n"
+                textoConsola.textContent+= Tamagotchi.nombre + " murio de infelicidad :(";
+                cantidadLineas++
+                Tamagotchi.vidas--
+                clearInterval(energiaInter);
+                reiniciarStats();
+                felicidad();
+            break;
+        }
+    }
+    ,1000 * 38);
+    
+}
+
+// Reiniciar Stats
+function reiniciarStats(){
+    Tamagotchi.hambre = 100;
+    Tamagotchi.sed = 100;
+    Tamagotchi.energia = 100;
+    Tamagotchi.felicidad = 100;
+    lesionado = false;
+}
 // Reiniciar Texto
 function reiniciarTexto(){
     var textoInter = setInterval(function(){
@@ -341,10 +624,14 @@ function inicioJuego(){
     crecer();
     hambre();
     sed();
+    energia();
+    felicidad();
     reiniciarTexto();
     checkFase();
     barraHambre();
     barraSed();
+    barraEnergia();
+    barraFelicidad();
     contadorVidas();
     checkPuntos();
     sumaPuntos();

@@ -15,6 +15,7 @@
             <img src="Assets/Tamago1fase.gif" id="tamago1Fase" class="tamago1Fase" alt="">
             <img src="Assets/Tamago2fase.gif" id="tamago2Fase" class="tamago2Fase" alt="">
             <img src="Assets/rip.png" class="rip" id="rip" alt="">
+            <img src="Assets/huesoRoto.gif" class="huesoRoto" id="huesoRoto" alt="">
             <!-- HUD -->
             <div class="contEdad">
                 <p id="textoEdad"></p>
@@ -33,6 +34,7 @@
             </div>
             <div class="boton agua" id="botonAgua">
                 <img src="Assets/Agua.png" alt="">
+                <p class="costoS">+</p>
                 <p class="costo">-5</p>
             </div>
             <div class="barraManzana" id="barraManzana">
@@ -40,12 +42,71 @@
             </div>
             <div class="boton manzana" id="botonAlimento">
                 <img src="Assets/Manzana.png" alt="">
+                <p class="costoH">+</p>
                 <p class="costo">-5</p>
+            </div>
+            <div class="barraEnergia" id="barraEnergia">
+                <div class="barraContEnergia" id="barraContEnergia"></div>
+            </div>
+            <div class="boton dormir" id="botonDormir">
+                <img src="Assets/Dormir.png" alt="">
+                <p class="costoS">-20</p>
+                <p class="costoH">-20</p>
+            </div>
+            <div class="boton trabajo" id="botonTrabajo">
+                <img src="Assets/Trabajo.png" alt="">
+                <p class="costoE">-20</p>
+                <p class="ganancia">+10</p>
+                <p class="costoF">-20</p>
+            </div>
+            <div class="barraFelicidad" id="barraFelicidad">
+                <div class="barraContFelicidad" id="barraContFelicidad"></div>
+            </div>
+            <div class="boton jugar" id="botonJugar">
+                <img src="Assets/Jugar.png" alt="">
+                <p class="costoH">-20</p>
+                <p class="costoS">-20</p>
+                <p class="costoF">+20</p>
+                <p class="costoE">-20</p>
             </div>
         </div>
 
         <div class="consola">
             <p id="textoConsola" class="textoConsola"></p>
+        </div>
+
+        <div class="consola tienda">
+            <p class="tiendaTitulo">Tienda</p>
+            <div class="boton yeso" id="botonYeso">
+                <img src="Assets/Yeso.png" alt="">
+                <p class="costoP">-10</p>
+            </div>
+        </div>
+        <div class="consola instrucciones">
+            <p class="instruccionesTitulo">Referencia</p>
+            <p class="textoInstru feliInstru">Felicidad</p>
+            <div class="instruFeli">
+                <div class="barraContFelicidad"></div>
+            </div>
+            <p class="textoInstru enerInstru">Energia</p>
+            <div class="instruEner">
+                <div class="barraContEnergia"></div>
+            </div>
+            <p class="textoInstru hambInstru">Hambre</p>
+            <div class="instruMan">
+                <div class="barraContManzana"></div>
+            </div>
+            <p class="textoInstru sedInstru">Sed</p>
+            <div class="instruAgua">
+                <div class="barraContAgua"></div>
+            </div>
+        </div>
+        <div class="volverJugar" id="volverJugar">
+            <p class="perdiste">Perdiste! Queres volver a jugar?</p>
+            
+                <p class="volverJugarSi" id="volverJugarSi">Si</p>
+                <p class="volverJugarNo" id="volverJugarNo">No</p>
+            
         </div>
     </div>
 

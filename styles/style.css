@@ -4,7 +4,18 @@
   -webkit-box-sizing: content-box;
           box-sizing: content-box;
   font-family: 'Pangolin', cursive;
-  z-index: 2;
+  -webkit-text-stroke: 0.5px black;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: -webkit-crisp-edges;
+  -ms-interpolation-mode: nearest-neighbor;
+      image-rendering: -webkit-optimize-contrast;
+      image-rendering: -o-pixelated;
+      image-rendering: pixelated;
+  image-rendering: crisp-edges;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 body {
@@ -20,7 +31,7 @@ body {
   height: 500px;
   width: 500px;
   position: absolute;
-  left: 25%;
+  left: 30%;
   top: 10%;
   border: black solid 10px;
   text-align: center;
@@ -41,20 +52,120 @@ body {
   height: 200px;
   width: 500px;
   position: absolute;
-  left: 25%;
-  top: 65%;
+  left: 30%;
+  top: 75%;
   border: #7a5523 solid 10px;
   border-radius: 2%;
   overflow: hidden;
 }
 
-.tamago1Fase {
-  width: 100px;
+.instrucciones {
+  left: 10%;
+  top: 10%;
+  height: 500px;
+  width: 300px;
 }
 
-.rip {
-  width: 100px;
-  display: none;
+.instruccionesTitulo {
+  position: relative;
+  left: 15%;
+  font-size: 35px;
+  color: white;
+}
+
+.instruFeli {
+  border: black 1px solid;
+  height: 20px;
+  width: 20px;
+  position: absolute;
+  top: 15%;
+  left: 40%;
+  overflow: hidden;
+}
+
+.feliInstru {
+  position: absolute;
+  top: 15%;
+  left: 5%;
+}
+
+.instruMan {
+  border: black 1px solid;
+  height: 20px;
+  width: 20px;
+  position: absolute;
+  top: 25%;
+  left: 40%;
+  overflow: hidden;
+}
+
+.hambInstru {
+  position: absolute;
+  top: 25%;
+  left: 5%;
+}
+
+.instruEner {
+  border: black 1px solid;
+  height: 20px;
+  width: 20px;
+  position: absolute;
+  top: 35%;
+  left: 40%;
+  overflow: hidden;
+}
+
+.enerInstru {
+  position: absolute;
+  top: 35%;
+  left: 5%;
+}
+
+.instruAgua {
+  border: black 1px solid;
+  height: 20px;
+  width: 20px;
+  position: absolute;
+  top: 45%;
+  left: 40%;
+  overflow: hidden;
+}
+
+.sedInstru {
+  position: absolute;
+  top: 45%;
+  left: 5%;
+}
+
+.textoInstru {
+  color: white;
+  font-size: 25px;
+}
+
+.tienda {
+  left: 60%;
+  top: 10%;
+  height: 500px;
+  width: 300px;
+}
+
+.tiendaTitulo {
+  position: relative;
+  left: 35%;
+  font-size: 35px;
+  color: white;
+}
+
+.yeso {
+  height: 100px;
+}
+
+.costoP {
+  position: absolute;
+  top: 65%;
+  left: 45%;
+  font-size: 35px;
+  color: yellow;
 }
 
 .textoConsola {
@@ -72,7 +183,11 @@ body {
 .boton {
   position: absolute;
   border: black solid 1px;
-  background-color: #a0a0a0;
+}
+
+.jugar {
+  top: 30%;
+  left: 70%;
 }
 
 .manzana {
@@ -85,6 +200,56 @@ body {
   left: 70%;
 }
 
+.dormir {
+  top: 75%;
+  left: 40%;
+}
+
+.trabajo {
+  top: 30%;
+  left: 10%;
+}
+
+.costoE {
+  position: absolute;
+  top: 75%;
+  left: 60%;
+  font-size: 22px;
+  color: #c765c7;
+}
+
+.ganancia {
+  position: absolute;
+  top: 55%;
+  left: 60%;
+  font-size: 22px;
+  color: yellow;
+}
+
+.costoH {
+  position: absolute;
+  top: 0%;
+  left: 5%;
+  font-size: 22px;
+  color: red;
+}
+
+.costoS {
+  position: absolute;
+  top: 0%;
+  left: 60%;
+  font-size: 22px;
+  color: blue;
+}
+
+.costoF {
+  position: absolute;
+  top: 75%;
+  left: 2%;
+  font-size: 22px;
+  color: #17e917;
+}
+
 .boton:hover {
   border-bottom: #fbff00 solid 5px;
   cursor: pointer;
@@ -94,13 +259,25 @@ body {
   position: absolute;
   top: 60%;
   left: 60%;
-  font-size: 40px;
+  font-size: 35px;
   color: yellow;
 }
 
-.tamago2Fase {
-  display: none;
+.barraEnergia {
+  border: black 1px solid;
+  height: 20px;
   width: 100px;
+  position: absolute;
+  top: 69%;
+  left: 40%;
+  overflow: hidden;
+}
+
+.barraContEnergia {
+  background-color: violet;
+  height: 20px;
+  width: 100px;
+  position: relative;
 }
 
 .barraAgua {
@@ -115,6 +292,23 @@ body {
 
 .barraContAgua {
   background-color: blue;
+  height: 20px;
+  width: 100px;
+  position: relative;
+}
+
+.barraFelicidad {
+  border: black 1px solid;
+  height: 20px;
+  width: 100px;
+  position: absolute;
+  top: 24%;
+  left: 70%;
+  overflow: hidden;
+}
+
+.barraContFelicidad {
+  background-color: #1cf139;
   height: 20px;
   width: 100px;
   position: relative;
@@ -175,5 +369,66 @@ body {
   left: 35%;
   font-size: 25px;
   color: #bb6d08;
+}
+
+.tamago2Fase {
+  display: none;
+  width: 100px;
+}
+
+.tamago1Fase {
+  width: 100px;
+}
+
+.rip {
+  width: 100px;
+  display: none;
+}
+
+.huesoRoto {
+  position: absolute;
+  top: 50%;
+  left: 60%;
+  width: 40px;
+  display: none;
+}
+
+.volverJugar {
+  background-color: #224920;
+  height: 100px;
+  width: 300px;
+  position: absolute;
+  left: 65%;
+  top: 75%;
+  border: #7a5523 solid 10px;
+  border-radius: 2%;
+  overflow: hidden;
+  color: white;
+  font-size: 23px;
+  display: none;
+}
+
+.volverJugarSi {
+  position: absolute;
+  top: 40%;
+  left: 25%;
+  font-size: 30px;
+}
+
+.volverJugarNo {
+  position: absolute;
+  top: 40%;
+  left: 75%;
+  font-size: 30px;
+}
+
+.volverJugarSi:hover {
+  color: greenyellow;
+  font-size: 32px;
+}
+
+.volverJugarNo:hover {
+  color: red;
+  font-size: 32px;
 }
 /*# sourceMappingURL=style.css.map */
