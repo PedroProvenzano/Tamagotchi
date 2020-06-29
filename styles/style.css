@@ -28,11 +28,11 @@ body {
   background-image: url(../Assets/FondoVerde.png);
   background-repeat: no-repeat;
   background-size: cover;
-  height: 500px;
-  width: 500px;
+  height: 30rem;
+  width: 30rem;
   position: absolute;
-  left: 30%;
-  top: 10%;
+  left: 15rem;
+  top: 2rem;
   border: black solid 10px;
   text-align: center;
   display: -webkit-box;
@@ -49,21 +49,21 @@ body {
 
 .consola {
   background-color: #224920;
-  height: 200px;
-  width: 500px;
+  height: 13rem;
+  width: 30rem;
   position: absolute;
-  left: 30%;
-  top: 75%;
+  left: 15rem;
+  top: 35rem;
   border: #7a5523 solid 10px;
   border-radius: 2%;
   overflow: hidden;
 }
 
 .instrucciones {
-  left: 10%;
-  top: 10%;
-  height: 500px;
-  width: 300px;
+  left: 0rem;
+  top: 2rem;
+  height: 30rem;
+  width: 13rem;
 }
 
 .instruccionesTitulo {
@@ -78,15 +78,15 @@ body {
   height: 20px;
   width: 20px;
   position: absolute;
-  top: 15%;
-  left: 40%;
+  top: 4rem;
+  left: 10rem;
   overflow: hidden;
 }
 
 .feliInstru {
   position: absolute;
-  top: 15%;
-  left: 5%;
+  top: 4rem;
+  left: 2rem;
 }
 
 .instruMan {
@@ -94,15 +94,15 @@ body {
   height: 20px;
   width: 20px;
   position: absolute;
-  top: 25%;
-  left: 40%;
+  top: 7rem;
+  left: 10rem;
   overflow: hidden;
 }
 
 .hambInstru {
   position: absolute;
-  top: 25%;
-  left: 5%;
+  top: 7rem;
+  left: 2rem;
 }
 
 .instruEner {
@@ -110,15 +110,15 @@ body {
   height: 20px;
   width: 20px;
   position: absolute;
-  top: 35%;
-  left: 40%;
+  top: 10rem;
+  left: 10rem;
   overflow: hidden;
 }
 
 .enerInstru {
   position: absolute;
-  top: 35%;
-  left: 5%;
+  top: 10rem;
+  left: 2rem;
 }
 
 .instruAgua {
@@ -126,15 +126,15 @@ body {
   height: 20px;
   width: 20px;
   position: absolute;
-  top: 45%;
-  left: 40%;
+  top: 13rem;
+  left: 10rem;
   overflow: hidden;
 }
 
 .sedInstru {
   position: absolute;
-  top: 45%;
-  left: 5%;
+  top: 13rem;
+  left: 2rem;
 }
 
 .textoInstru {
@@ -143,10 +143,10 @@ body {
 }
 
 .tienda {
-  left: 60%;
-  top: 10%;
-  height: 500px;
-  width: 300px;
+  left: 47rem;
+  top: 2rem;
+  height: 30rem;
+  width: 13rem;
 }
 
 .tiendaTitulo {
@@ -395,11 +395,11 @@ body {
 
 .volverJugar {
   background-color: #224920;
-  height: 100px;
-  width: 300px;
+  height: 8rem;
+  width: 20rem;
   position: absolute;
-  left: 65%;
-  top: 75%;
+  left: 21rem;
+  top: 21rem;
   border: #7a5523 solid 10px;
   border-radius: 2%;
   overflow: hidden;
