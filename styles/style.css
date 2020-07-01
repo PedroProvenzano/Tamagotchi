@@ -210,6 +210,30 @@ body {
   left: 10%;
 }
 
+.saveFile {
+  position: absolute;
+  width: 200px;
+  top: 25rem;
+  left: 4rem;
+}
+
+.saveFileIco {
+  width: 70px;
+}
+
+.saveFileText {
+  position: absolute;
+  top: -2rem;
+  left: -2rem;
+  color: white;
+  font-size: 1.2rem;
+}
+
+.saveFileIco:hover {
+  cursor: pointer;
+  border-bottom: 4px white solid;
+}
+
 .costoE {
   position: absolute;
   top: 75%;
