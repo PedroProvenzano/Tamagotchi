@@ -11,8 +11,8 @@ var Tamagotchi = {
     lesionado: false
 }
 // Variables globales
-var cantidadLineas = 0;
-var terminoJuego = false;
+let cantidadLineas = 0;
+let terminoJuego = false;
 const regex = / /gi; 
 
 // DOM
@@ -75,7 +75,7 @@ function comprarYeso(){
 
 // Funciones del HUD
 function barraHambre(){
-    var barraHambreInter = setInterval(function(){
+    let barraHambreInter = setInterval(function(){
         switch(Tamagotchi.hambre){
             case 100:
                 barraContManzana.style.left = "0%";
@@ -100,7 +100,7 @@ function barraHambre(){
 }
 
 function barraSed(){
-    var barraSedInter = setInterval(function(){
+    let barraSedInter = setInterval(function(){
         switch(Tamagotchi.sed){
             case 100:
                 barraContAgua.style.left = "0%";
@@ -125,7 +125,7 @@ function barraSed(){
 }
 
 function barraEnergia(){
-    var barraEnergiaInter = setInterval(function(){
+    let barraEnergiaInter = setInterval(function(){
         switch(Tamagotchi.energia){
             case 100:
                 barraContEnergia.style.left = "0%";
@@ -150,7 +150,7 @@ function barraEnergia(){
 }
 
 function barraFelicidad(){
-    var barraFelicidadInter = setInterval(function(){
+    let barraFelicidadInter = setInterval(function(){
         switch(Tamagotchi.felicidad){
             case 100:
                 barraContFelicidad.style.left = "0%";
@@ -203,7 +203,7 @@ function edadHUD(){
 
 // Contador de vidas
 function contadorVidas(){
-    var set0Inter = setInterval(function(){
+    let set0Inter = setInterval(function(){
         if(Tamagotchi.vidas==0){
             textoConsola.textContent+= "\r\n"
             textoConsola.textContent+= Tamagotchi.nombre + " murio, perdiste!";
@@ -382,7 +382,7 @@ function hidratar(){
 
 // Crecer
 function crecer(){
-    var crecerInter = setInterval(function(){
+    let crecerInter = setInterval(function(){
         if(terminoJuego){
             clearInterval(crecerInter);
             return;
@@ -436,7 +436,7 @@ function checkFase(){
 
 // Hambre
 function hambre(){
-    var hambreInter = setInterval(function(){
+    let hambreInter = setInterval(function(){
         if(terminoJuego){
             clearInterval(hambreInter);
             return;
@@ -470,7 +470,7 @@ function hambre(){
 
 // Sed
 function sed(){
-    var sedInter = setInterval(function(){
+    let sedInter = setInterval(function(){
         if(terminoJuego){
             clearInterval(sedInter);
             return;
@@ -504,7 +504,7 @@ function sed(){
 
 // Energia
 function energia(){
-    var energiaInter = setInterval(function(){
+    let energiaInter = setInterval(function(){
         if(terminoJuego){
             clearInterval(energiaInter);
             return;
@@ -538,7 +538,7 @@ function energia(){
 
 // Felicidad
 function felicidad(){
-    var felicidadInter = setInterval(function(){
+    let felicidadInter = setInterval(function(){
         if(terminoJuego){
             clearInterval(felicidadInter);
             return;
@@ -580,7 +580,7 @@ function reiniciarStats(){
 }
 // Reiniciar Texto
 function reiniciarTexto(){
-    var textoInter = setInterval(function(){
+    let textoInter = setInterval(function(){
         if(terminoJuego){
             clearInterval(textoInter);
             return;
@@ -595,7 +595,7 @@ function reiniciarTexto(){
 
 // Suma Puntos
 function sumaPuntos(){
-    var sumaPuntosInt = setInterval(function(){
+    let sumaPuntosInt = setInterval(function(){
         if(terminoJuego){
             clearInterval(sumaPuntosInt);
             return;
@@ -651,8 +651,8 @@ function inicioJuego(){
 // SAVES
 
 function autoSave(){
-    var save = setInterval(function(){
-        var saveData = JSON.stringify(Tamagotchi);
+    let save = setInterval(function(){
+        let saveData = JSON.stringify(Tamagotchi);
         localStorage.setItem("Tamagotchi", saveData);
         textoConsola.textContent+= "\r\n"
         textoConsola.textContent+= "Auto guardado realizado!";
@@ -664,7 +664,7 @@ function autoSave(){
     
 }
 function saveData(){
-    var saveData = JSON.stringify(Tamagotchi);
+    let saveData = JSON.stringify(Tamagotchi);
     localStorage.setItem("Tamagotchi", saveData);
     textoConsola.textContent+= "\r\n"
     textoConsola.textContent+= "Guardado realizado!";
@@ -672,7 +672,7 @@ function saveData(){
 }
 function loadData(){
     if(localStorage.Tamagotchi){
-        var loadDataTam = JSON.parse(localStorage.getItem("Tamagotchi"));
+        let loadDataTam = JSON.parse(localStorage.getItem("Tamagotchi"));
         Tamagotchi = loadDataTam;
         nombreHUD();
         inicioJuego();
